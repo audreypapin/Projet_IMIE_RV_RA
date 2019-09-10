@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SceneIndice.unity
+    path: Assets/Scenes/SceneEnigme1.unity
     guid: e4512af84c05f914883787a07020b7c2
   m_configObjects: {}
