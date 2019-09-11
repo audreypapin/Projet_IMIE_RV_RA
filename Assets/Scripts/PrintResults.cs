@@ -9,10 +9,10 @@ public class PrintResults : MonoBehaviour
         HighScore(PlayerPrefs.GetInt("NumberOfCorrect"), PlayerPrefs.GetInt("NumberOfFalse"), PlayerPrefs.GetFloat("Timer"));
 
         Text premier = GameObject.Find("Premier").GetComponent<Text>();
-        premier.text = PlayerPrefs.GetInt("HCorrect0") + " | " + PlayerPrefs.GetInt("HFalse0") + " | " + PlayerPrefs.GetFloat("HTime0");
+        premier.text = PlayerPrefs.GetInt("HCorrect0") + " | " + PlayerPrefs.GetInt("HFalse0") + " | " + Mathf.RoundToInt(PlayerPrefs.GetFloat("HTime0"));
 
         Text deuxieme = GameObject.Find("Deuxieme").GetComponent<Text>();
-        deuxieme.text = PlayerPrefs.GetInt("HCorrect1") + " | " + PlayerPrefs.GetInt("HFalse1") + " | " + PlayerPrefs.GetFloat("HTime1");
+        deuxieme.text = PlayerPrefs.GetInt("HCorrect1") + " | " + PlayerPrefs.GetInt("HFalse1") + " | " + Mathf.RoundToInt(PlayerPrefs.GetFloat("HTime1"));
     }
 
     void HighScore(int correctAnswers, int falseAnswers, float time)
@@ -28,7 +28,7 @@ public class PrintResults : MonoBehaviour
         {
             if (PlayerPrefs.HasKey("HCorrect" + i))
             {
-                if (PlayerPrefs.GetInt("HCorrect" + i) < newCorrect)
+                if (PlayerPrefs.GetInt("HCorrect" + i) == newCorrect)
                 {
                     if (PlayerPrefs.GetFloat("HTime" + i) < newTime)
                     {
@@ -44,6 +44,20 @@ public class PrintResults : MonoBehaviour
                         newFalse = oldFalse;
                         newTime = oldTime;
                     }
+                }
+                else if (PlayerPrefs.GetInt("HCorrect" + i) < newCorrect)
+                {
+                    oldCorrect = PlayerPrefs.GetInt("HCorrect" + i);
+                    oldFalse = PlayerPrefs.GetInt("HFalse" + i);
+                    oldTime = PlayerPrefs.GetInt("HTime" + i);
+
+                    PlayerPrefs.SetInt("HCorrect" + i, newCorrect);
+                    PlayerPrefs.SetInt("HFalse" + i, newFalse);
+                    PlayerPrefs.SetFloat("HTime" + i, newTime);
+
+                    newCorrect = oldCorrect;
+                    newFalse = oldFalse;
+                    newTime = oldTime;
                 }
             }
             else
