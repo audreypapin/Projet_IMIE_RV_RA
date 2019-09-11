@@ -7,15 +7,7 @@ public class TimerCount : MonoBehaviour
     private Text timer;
     private bool keepTicking = true;
     [SerializeField]
-    private float maxTime;
-    #endregion
-
-    #region Methods
-    public float MaxTime
-    {
-        get { return maxTime; }
-        set { maxTime = value; }
-    }
+    public float maxTime;
     #endregion
 
     #region Functions

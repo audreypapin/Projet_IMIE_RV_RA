@@ -5,19 +5,25 @@ using UnityEngine.UI;
 public class RiddleResult : MonoBehaviour
 {
     #region Attributes
-    //private TimerCount timerCount;
-    //private float maxTime;
+    private TimerCount timerCount;
     #endregion
 
     #region Functions
     // Start is called before the first frame update
     void Start()
     {
-        //maxTime = timerCount.MaxTime;
-        Button rightChoiceRiddle1 = GameObject.Find("Choix2").GetComponent<Button>();
-        rightChoiceRiddle1.onClick.AddListener(Success);
-        Button wrongChoiceRiddle1 = GameObject.Find("Choix1").GetComponent<Button>();
-        wrongChoiceRiddle1.onClick.AddListener(Failure);
+        GameObject[] badChoices = GameObject.FindGameObjectsWithTag("Mauvais");
+        foreach (GameObject go in badChoices)
+        {
+            go.GetComponent<Button>().onClick.AddListener(Failure);
+        }
+        GameObject goodChoice = GameObject.FindGameObjectWithTag("Bon");
+        goodChoice.GetComponent<Button>().onClick.AddListener(Success);
+    }
+
+    void Update()
+    {
+        timerCount = GameObject.Find("Timer").GetComponent<TimerCount>();
     }
 
     void Success()
@@ -28,8 +34,7 @@ public class RiddleResult : MonoBehaviour
 
     void Failure()
     {
-        //maxTime -= 30f;
-        Debug.Log("Mauvaise réponse !");
+        timerCount.maxTime -= 30f;
     }
     #endregion
 }
