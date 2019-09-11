@@ -7,6 +7,8 @@ public class RiddleResult : MonoBehaviour
     #region Attributes
     private TimerCount timerCount;
     private int nextTransition = 1;
+    private int numberOfCorrect = 0;
+    private int numberOfFalse = 0;
     #endregion
 
     #region Functions
@@ -23,11 +25,21 @@ public class RiddleResult : MonoBehaviour
 
         if (PlayerPrefs.HasKey("TransitionNumber"))
             nextTransition = PlayerPrefs.GetInt("TransitionNumber");
+        if (PlayerPrefs.HasKey("NumberOfCorrect"))
+            numberOfCorrect = PlayerPrefs.GetInt("NumberOfCorrect");
+        if (PlayerPrefs.HasKey("NumberOfFalse"))
+            numberOfFalse = PlayerPrefs.GetInt("NumberOfFalse");
         if (SceneManager.GetActiveScene().name == "SceneEnigme1")
         {
             if (PlayerPrefs.HasKey("TransitionNumber"))
                 PlayerPrefs.DeleteKey("TransitionNumber");
+            if (PlayerPrefs.HasKey("NumberOfCorrect"))
+                PlayerPrefs.DeleteKey("NumberOfCorrect");
+            if (PlayerPrefs.HasKey("NumberOfFalse"))
+                PlayerPrefs.DeleteKey("NumberOfFalse");
             nextTransition = 1;
+            numberOfCorrect = 0;
+            numberOfFalse = 0;
         }
     }
 
@@ -37,22 +49,33 @@ public class RiddleResult : MonoBehaviour
     }
 
     void LoadNextTransition()
-    {        
-        SceneManager.LoadScene("SceneTransition" + nextTransition);
-        nextTransition++;
-        PlayerPrefs.SetInt("TransitionNumber", nextTransition);
+    {
+        PlayerPrefs.SetFloat("Timer", timerCount.maxTime);
+        PlayerPrefs.SetInt("NumberOfCorrect", numberOfCorrect);
+        PlayerPrefs.SetInt("NumberOfFalse", numberOfFalse);
+        if (SceneManager.GetActiveScene().name == "SceneEnigme7")
+        {
+            timerCount.keepTicking = false;
+            SceneManager.LoadScene("SceneClassement");
+        }
+        else
+        {
+            SceneManager.LoadScene("SceneTransition" + nextTransition);
+            nextTransition++;
+            PlayerPrefs.SetInt("TransitionNumber", nextTransition);
+        }
     }
 
     void Success()
     {
-        PlayerPrefs.SetFloat("Timer", timerCount.maxTime);
+        numberOfCorrect++;
         LoadNextTransition();
     }
 
     void Failure()
     {
-        timerCount.maxTime -= 30f;
-        PlayerPrefs.SetFloat("Timer", timerCount.maxTime);
+        timerCount.maxTime -= 30f;     
+        numberOfFalse++;
         LoadNextTransition();
     }
     #endregion

@@ -6,7 +6,7 @@ public class TimerCount : MonoBehaviour
 {
     #region Attributes
     private Text timer;
-    private bool keepTicking = true;
+    public bool keepTicking = true;
     [SerializeField]
     public float maxTime;
     #endregion
@@ -46,6 +46,9 @@ public class TimerCount : MonoBehaviour
                 go.GetComponent<Button>().interactable = false;
             }
             GameObject.FindGameObjectWithTag("Bon").GetComponent<Button>().interactable = false;
+
+            PlayerPrefs.SetFloat("Timer", 0f);
+            SceneManager.LoadScene("SceneClassement");
         }
     }
     #endregion

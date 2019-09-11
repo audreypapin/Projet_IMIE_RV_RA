@@ -45,6 +45,6 @@ EditorBuildSettings:
     path: Assets/Scenes/SceneEnigme7.unity
     guid: 74d1fd4f6c0a26c4ebb2521d419ac0b2
   - enabled: 1
-    path: Assets/Scenes/SceneTransition7.unity
+    path: Assets/Scenes/SceneClassement.unity
     guid: 06ede60aaf467e740939713c9a49d13d
   m_configObjects: {}
