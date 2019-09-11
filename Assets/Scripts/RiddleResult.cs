@@ -6,6 +6,7 @@ public class RiddleResult : MonoBehaviour
 {
     #region Attributes
     private TimerCount timerCount;
+    private int nextTransition = 1;
     #endregion
 
     #region Functions
@@ -19,6 +20,15 @@ public class RiddleResult : MonoBehaviour
         }
         GameObject goodChoice = GameObject.FindGameObjectWithTag("Bon");
         goodChoice.GetComponent<Button>().onClick.AddListener(Success);
+
+        if (PlayerPrefs.HasKey("TransitionNumber"))
+            nextTransition = PlayerPrefs.GetInt("TransitionNumber");
+        if (SceneManager.GetActiveScene().name == "SceneEnigme1")
+        {
+            if (PlayerPrefs.HasKey("TransitionNumber"))
+                PlayerPrefs.DeleteKey("TransitionNumber");
+            nextTransition = 1;
+        }
     }
 
     void Update()
@@ -26,15 +36,24 @@ public class RiddleResult : MonoBehaviour
         timerCount = GameObject.Find("Timer").GetComponent<TimerCount>();
     }
 
+    void LoadNextTransition()
+    {        
+        SceneManager.LoadScene("SceneTransition" + nextTransition);
+        nextTransition++;
+        PlayerPrefs.SetInt("TransitionNumber", nextTransition);
+    }
+
     void Success()
     {
-        // SceneManager.LoadScene("Enigme2");
-        Debug.Log("Bonne réponse !");
+        PlayerPrefs.SetFloat("Timer", timerCount.maxTime);
+        LoadNextTransition();
     }
 
     void Failure()
     {
         timerCount.maxTime -= 30f;
+        PlayerPrefs.SetFloat("Timer", timerCount.maxTime);
+        LoadNextTransition();
     }
     #endregion
 }
