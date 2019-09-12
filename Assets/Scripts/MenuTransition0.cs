@@ -10,6 +10,8 @@ public class MenuTransition0 : MonoBehaviour
     {
         Button btn = GameObject.Find("jouer").GetComponent<Button>();
         btn.onClick.AddListener(TaskOnClick);
+        Button quit = GameObject.Find("quitter").GetComponent<Button>();
+        quit.onClick.AddListener(Quitter);
     }
 
     void TaskOnClick()
@@ -17,10 +19,8 @@ public class MenuTransition0 : MonoBehaviour
         SceneManager.LoadScene("SceneTransition0");
     }
 
-
-    // Update is called once per frame
-    void Update()
+    void Quitter()
     {
-
+        Application.Quit();
     }
 }

@@ -26,7 +26,7 @@ public class TimerCount : MonoBehaviour
         {
             if (PlayerPrefs.HasKey("Timer"))
                 PlayerPrefs.DeleteKey("Timer");
-            maxTime = 40f;
+            maxTime = 600f;
         }
     }
 

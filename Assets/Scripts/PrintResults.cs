@@ -16,7 +16,7 @@ public class PrintResults : MonoBehaviour
         {
             corrects.text += PlayerPrefs.GetInt("HCorrect" + i) + "\r\n\r\n";
             mauvais.text += PlayerPrefs.GetInt("HFalse" + i) + "\r\n\r\n";
-            temps.text += Mathf.RoundToInt(PlayerPrefs.GetFloat("Timer")) + "\r\n\r\n";
+            temps.text += Mathf.RoundToInt(PlayerPrefs.GetFloat("HTime" + i)) + "\r\n\r\n";
         }
     }
 
