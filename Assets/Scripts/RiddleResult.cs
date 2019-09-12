@@ -58,6 +58,11 @@ public class RiddleResult : MonoBehaviour
             timerCount.keepTicking = false;
             SceneManager.LoadScene("SceneClassement");
         }
+        else if (SceneManager.GetActiveScene().name != "SceneEnigme7" && timerCount.maxTime < 0)
+        {
+            timerCount.keepTicking = false;
+            SceneManager.LoadScene("ScenePerdu");
+        }
         else
         {
             SceneManager.LoadScene("SceneTransition" + nextTransition);
