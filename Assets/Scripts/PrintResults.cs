@@ -39,7 +39,7 @@ public class PrintResults : MonoBehaviour
                     {
                         oldCorrect = PlayerPrefs.GetInt("HCorrect" + i);
                         oldFalse = PlayerPrefs.GetInt("HFalse" + i);
-                        oldTime = PlayerPrefs.GetInt("HTime" + i);
+                        oldTime = PlayerPrefs.GetFloat("HTime" + i);
 
                         PlayerPrefs.SetInt("HCorrect" + i, newCorrect);
                         PlayerPrefs.SetInt("HFalse" + i, newFalse);
@@ -54,7 +54,7 @@ public class PrintResults : MonoBehaviour
                 {
                     oldCorrect = PlayerPrefs.GetInt("HCorrect" + i);
                     oldFalse = PlayerPrefs.GetInt("HFalse" + i);
-                    oldTime = PlayerPrefs.GetInt("HTime" + i);
+                    oldTime = PlayerPrefs.GetFloat("HTime" + i);
 
                     PlayerPrefs.SetInt("HCorrect" + i, newCorrect);
                     PlayerPrefs.SetInt("HFalse" + i, newFalse);
