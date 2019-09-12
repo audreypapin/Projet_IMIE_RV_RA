@@ -56,4 +56,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ScenePerdu.unity
     guid: 601d25b789f8bc84baf8da6670914822
+  - enabled: 1
+    path: Assets/Scenes/SceneUsername.unity
+    guid: 225cbd5c35028a24fb7a0dd2e98de330
   m_configObjects: {}
