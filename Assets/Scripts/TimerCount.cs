@@ -1,33 +1,33 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class TimerCount : MonoBehaviour
 {
     #region Attributes
     private Text timer;
-    private bool keepTicking = true;
+    public bool keepTicking = true;
     [SerializeField]
-    private float maxTime;
-    #endregion
-
-    #region Methods
-    public float MaxTime
-    {
-        get { return maxTime; }
-        set { maxTime = value; }
-    }
+    public float maxTime;
     #endregion
 
     #region Functions
     // Start is called before the first frame update
     void Start()
     {
-        if(maxTime == 0f)
+        if (maxTime == 0f)
+            maxTime = 600f;
+
+        if (PlayerPrefs.HasKey("Timer"))
+            maxTime = PlayerPrefs.GetFloat("Timer");
+        timer = GameObject.Find("Timer").GetComponent<Text>();
+
+        if (SceneManager.GetActiveScene().name == "SceneEnigme1")
         {
+            if (PlayerPrefs.HasKey("Timer"))
+                PlayerPrefs.DeleteKey("Timer");
             maxTime = 600f;
         }
-
-        timer = GameObject.Find("Timer").GetComponent<Text>();
     }
 
     // Update is called once per frame
@@ -41,10 +41,14 @@ public class TimerCount : MonoBehaviour
         if (maxTime < 0)
         {
             keepTicking = false;
-            foreach (GameObject go in GameObject.FindGameObjectsWithTag("Choix"))
+            foreach (GameObject go in GameObject.FindGameObjectsWithTag("Mauvais"))
             {
                 go.GetComponent<Button>().interactable = false;
             }
+            GameObject.FindGameObjectWithTag("Bon").GetComponent<Button>().interactable = false;
+
+            PlayerPrefs.SetFloat("Timer", 0f);
+            SceneManager.LoadScene("SceneClassement");
         }
     }
     #endregion
