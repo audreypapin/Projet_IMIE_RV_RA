@@ -48,7 +48,7 @@ public class TimerCount : MonoBehaviour
             GameObject.FindGameObjectWithTag("Bon").GetComponent<Button>().interactable = false;
 
             PlayerPrefs.SetFloat("Timer", 0f);
-            SceneManager.LoadScene("SceneClassement");
+            SceneManager.LoadScene("ScenePerdu");
         }
     }
     #endregion
