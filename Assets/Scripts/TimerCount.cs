@@ -26,7 +26,7 @@ public class TimerCount : MonoBehaviour
         {
             if (PlayerPrefs.HasKey("Timer"))
                 PlayerPrefs.DeleteKey("Timer");
-            maxTime = 600f;
+            maxTime = 40f;
         }
     }
 
@@ -48,7 +48,7 @@ public class TimerCount : MonoBehaviour
             GameObject.FindGameObjectWithTag("Bon").GetComponent<Button>().interactable = false;
 
             PlayerPrefs.SetFloat("Timer", 0f);
-            SceneManager.LoadScene("SceneClassement");
+            SceneManager.LoadScene("ScenePerdu");
         }
     }
     #endregion

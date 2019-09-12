@@ -53,10 +53,10 @@ public class RiddleResult : MonoBehaviour
         PlayerPrefs.SetFloat("Timer", timerCount.maxTime);
         PlayerPrefs.SetInt("NumberOfCorrect", numberOfCorrect);
         PlayerPrefs.SetInt("NumberOfFalse", numberOfFalse);
-        if (SceneManager.GetActiveScene().name == "SceneEnigme7")
+        if (SceneManager.GetActiveScene().name == "SceneEnigme7" || timerCount.maxTime < 0)
         {
             timerCount.keepTicking = false;
-            SceneManager.LoadScene("SceneClassement");
+            SceneManager.LoadScene("ScenePerdu");
         }
         else
         {

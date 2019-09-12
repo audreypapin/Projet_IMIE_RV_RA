@@ -1,7 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class MenuTransition0 : MonoBehaviour
 {
@@ -15,8 +14,7 @@ public class MenuTransition0 : MonoBehaviour
 
     void TaskOnClick()
     {
-        Application.LoadLevel("SceneTransition0");
-        Debug.Log("You have clicked the button!");
+        SceneManager.LoadScene("SceneTransition0");
     }
 
 

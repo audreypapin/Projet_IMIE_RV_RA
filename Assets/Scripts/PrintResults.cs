@@ -8,11 +8,16 @@ public class PrintResults : MonoBehaviour
     {
         HighScore(PlayerPrefs.GetInt("NumberOfCorrect"), PlayerPrefs.GetInt("NumberOfFalse"), PlayerPrefs.GetFloat("Timer"));
 
-        Text premier = GameObject.Find("Premier").GetComponent<Text>();
-        premier.text = PlayerPrefs.GetInt("HCorrect0") + " | " + PlayerPrefs.GetInt("HFalse0") + " | " + Mathf.RoundToInt(PlayerPrefs.GetFloat("HTime0"));
+        Text corrects = GameObject.Find("Corrects").GetComponent<Text>();
+        Text mauvais = GameObject.Find("Mauvais").GetComponent<Text>();
+        Text temps = GameObject.Find("Temps").GetComponent<Text>();
 
-        Text deuxieme = GameObject.Find("Deuxieme").GetComponent<Text>();
-        deuxieme.text = PlayerPrefs.GetInt("HCorrect1") + " | " + PlayerPrefs.GetInt("HFalse1") + " | " + Mathf.RoundToInt(PlayerPrefs.GetFloat("HTime1"));
+        for (int i = 0; i < 10; i++)
+        {
+            corrects.text += PlayerPrefs.GetInt("HCorrect" + i) + "\r\n\r\n";
+            mauvais.text += PlayerPrefs.GetInt("HFalse" + i) + "\r\n\r\n";
+            temps.text += Mathf.RoundToInt(PlayerPrefs.GetFloat("Timer")) + "\r\n\r\n";
+        }
     }
 
     void HighScore(int correctAnswers, int falseAnswers, float time)
