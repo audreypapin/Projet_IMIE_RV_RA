@@ -16,7 +16,7 @@ public class MenuTransition0 : MonoBehaviour
 
     void TaskOnClick()
     {
-        SceneManager.LoadScene("SceneTransition0");
+        SceneManager.LoadScene("SceneUsername");
     }
 
     void Quitter()
