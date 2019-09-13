@@ -14,7 +14,11 @@ public class UsernameManager : MonoBehaviour
     void ValidateUsername()
     {
         Text username = GameObject.Find("Username").GetComponent<Text>();
-        PlayerPrefs.SetString("Username", username.text);
+        if (username.text == "")
+            PlayerPrefs.SetString("Username", "Username" + Random.Range(0, 1000));
+        else
+            PlayerPrefs.SetString("Username", username.text);
+        Debug.Log("Username is : " + PlayerPrefs.GetString("Username"));
         SceneManager.LoadScene("SceneTransition0");
     }
 }
