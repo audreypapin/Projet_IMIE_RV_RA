@@ -731,7 +731,7 @@ MonoBehaviour:
     m_Font: {fileID: 12800000, guid: 7cb2912222469634ba17a77055919ea8, type: 3}
     m_FontSize: 35
     m_FontStyle: 0
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 2
     m_MaxSize: 50
     m_Alignment: 1
@@ -742,9 +742,9 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: "Pour d\xE9buter la partie, vous devez trouver la 1\xE8re \xE9tape dans
     un lieu pr\xE9cis. \n\nCe lieu est un point d'entr\xE9e. Source d'information,
-    il est le coeur du batiment. Baign\xE9 de lumi\xE8re, ce sera le seul lieux ou
+    il est le coeur du batiment. Baign\xE9 de lumi\xE8re, ce sera le seul lieu o\xF9
     vous pourrez \xEAtre en s\xE9curit\xE9 dans la partie.  \nPar la suite, prenez
-    garde aux slendermans, personne ne peut pr\xE9voir ou ils se cachent...\n\n\n"
+    garde aux slendermans, personne ne peut pr\xE9voir o\xF9 ils se cachent...\n\n\n"
 --- !u!222 &786151476
 CanvasRenderer:
   m_ObjectHideFlags: 0

@@ -56,7 +56,7 @@ public class RiddleResult : MonoBehaviour
         if (SceneManager.GetActiveScene().name == "SceneEnigme7")
         {
             timerCount.keepTicking = false;
-            SceneManager.LoadScene("SceneClassement");
+            SceneManager.LoadScene("SceneGagne");
         }
         else if (SceneManager.GetActiveScene().name != "SceneEnigme7" && timerCount.maxTime < 0)
         {

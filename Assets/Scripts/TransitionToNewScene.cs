@@ -13,7 +13,7 @@ public class TransitionToNewScene : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Button validation = GameObject.Find("Validation").GetComponent<Button>();
+        Button validation = GameObject.Find("Trouve").GetComponent<Button>();
         validation.onClick.AddListener(LoadNextScene);
 
         if (PlayerPrefs.HasKey("SceneNumber"))
